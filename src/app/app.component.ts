@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Car} from "./car.model";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Angular-NgRx';
+  public cars: Car[] = [
+    new Car('Ford', '12.12.12', 'Focus', false, 1),
+    new Car('Audi', '09.09.12', 'A4', false, 2),
+  ]
+
 }

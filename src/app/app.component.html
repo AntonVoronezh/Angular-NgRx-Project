@@ -3,7 +3,8 @@
 
   <div class="list-group mt-5">
     <app-car
-      *ngFor="let c of [1,2,3]"
+      *ngFor="let c of cars"
+      [car]="c"
     ></app-car>
   </div>
 </div>
