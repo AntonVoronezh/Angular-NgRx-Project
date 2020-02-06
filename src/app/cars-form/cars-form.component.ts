@@ -5,6 +5,7 @@ import {Car} from "../car.model";
 import {Store} from "@ngrx/store";
 import {AppState} from "../redux/app.state";
 import {AddCar} from "../redux/cars.actions";
+import {CarsService} from "../cars.service";
 
 @Component({
   selector: 'app-cars-form',
@@ -18,10 +19,11 @@ export class CarsFormComponent implements OnInit {
 
   // @Output() addCar = new EventEmitter<Car>();
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, private servise: CarsService) {
   }
 
   ngOnInit() {
+
   }
 
   onAdd() {
@@ -47,6 +49,6 @@ export class CarsFormComponent implements OnInit {
   }
 
   onLoad() {
-
+    this.servise.loadCars()
   }
 }

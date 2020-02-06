@@ -6,6 +6,7 @@ export namespace CAR_ACTIONS {
   export const ADD_CAR = 'ADD_CAR';
   export const DEL_CAR = 'DEL_CAR';
   export const UPD_CAR = 'UPD_CAR';
+  export const LOAD_CARS = 'LOAD_CARS';
 }
 
 export class AddCar implements Action {
@@ -29,5 +30,12 @@ export class UpdCar implements Action {
   }
 }
 
-export type CarsActions = AddCar | DelCar | UpdCar;
+export class LoadCar implements Action {
+  readonly type = CAR_ACTIONS.LOAD_CARS;
+
+  constructor(public payload: Car[]) {
+  }
+}
+
+export type CarsActions = AddCar | DelCar | UpdCar | LoadCar;
 
