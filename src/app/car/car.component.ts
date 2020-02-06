@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, Output,} from '@angular/core';
 import {Car} from "../car.model";
 import {Store} from "@ngrx/store";
 import {AppState} from "../redux/app.state";
-import {DelCar} from "../redux/cars.actions";
+import {DelCar, UpdCar} from "../redux/cars.actions";
 
 @Component({
   selector: 'app-car',
@@ -23,6 +23,7 @@ export class CarComponent {
   }
 
   onBuy() {
-    this.car.isSold = true;
+    // this.car.isSold = true;
+    this.store.dispatch(new UpdCar(this.car))
   }
 }
