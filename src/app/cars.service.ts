@@ -4,8 +4,9 @@ import {Store} from "@ngrx/store";
 import {map} from "rxjs/operators";
 
 import {AppState} from "./redux/app.state";
-import {Car} from "./car.model";
+import {Car, Cars} from "./car.model";
 import {AddCar, DelCar, LoadCar, UpdCar} from "./redux/cars.actions";
+import {Observable} from "rxjs";
 
 class Card {
 }
@@ -17,8 +18,13 @@ export class CarsService {
   constructor(private http: HttpClient, private store: Store<AppState>) {
   }
 
+  preloadCars(): Observable<Car[]> {
+    return this.http.get<Car[]>(`${CarsService.baseUrl}/cars`)
+
+  }
+
   loadCars(): void {
-    this.http.get<Car[]>(`${CarsService.baseUrl}/cars`)
+    this.preloadCars()
       .pipe(map(c => this.store.dispatch(new LoadCar(c))))
       .subscribe()
   }
