@@ -13,8 +13,8 @@
 
   <div class="row justify-content-lg-center">
     <div class="col-lg-12">
-      <button type="button" class="btn btn-danger btn-sm mr-1">Delete</button>
-      <button type="button" class="btn btn-success btn-sm" [disabled]="car.isSold">Buy</button>
+      <button (click)="onDelete()" type="button" class="btn btn-danger btn-sm mr-1">Delete</button>
+      <button (click)="onBuy()" type="button" class="btn btn-success btn-sm" [disabled]="car.isSold">Buy</button>
     </div>
   </div>
 

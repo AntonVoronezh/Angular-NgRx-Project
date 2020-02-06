@@ -1,10 +1,13 @@
 <div class="container">
-  <app-cars-form></app-cars-form>
+  <app-cars-form
+    (addCar)="onAdd($event)"
+  ></app-cars-form>
 
   <div class="list-group mt-5">
     <app-car
       *ngFor="let c of cars"
       [car]="c"
+      (deleteCar)="onDelete($event)"
     ></app-car>
   </div>
 </div>
