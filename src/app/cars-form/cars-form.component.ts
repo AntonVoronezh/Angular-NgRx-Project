@@ -15,7 +15,7 @@ import {CarsService} from "../cars.service";
 export class CarsFormComponent implements OnInit {
   carName: string = '';
   carModel: string = '';
-  private id: number = 2;
+  // private id: number = 2;
 
   // @Output() addCar = new EventEmitter<Car>();
 
@@ -31,21 +31,19 @@ export class CarsFormComponent implements OnInit {
       return;
     }
 
-    this.id = ++this.id;
-
     const car = new Car(
       this.carName,
       moment().format('DD.MM.YYYY'),
       this.carModel,
       false,
-      this.id
     )
 
     this.carModel = '';
     this.carName = '';
     // this.addCar.emit(car);
 
-    this.store.dispatch(new AddCar(car));
+    // this.store.dispatch(new AddCar(car));
+    this.servise.addCar(car);
   }
 
   onLoad() {

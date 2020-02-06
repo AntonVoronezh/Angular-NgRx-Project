@@ -4,8 +4,8 @@ import {Store} from "@ngrx/store";
 import {map} from "rxjs/operators";
 
 import {AppState} from "./redux/app.state";
-import {Car, Cars} from "./car.model";
-import {LoadCar} from "./redux/cars.actions";
+import {Car} from "./car.model";
+import {AddCar, DelCar, LoadCar, UpdCar} from "./redux/cars.actions";
 
 class Card {
 }
@@ -22,4 +22,24 @@ export class CarsService {
       .pipe(map(c => this.store.dispatch(new LoadCar(c))))
       .subscribe()
   }
+
+  addCar(car: Car) {
+    this.http.post<Car>(`${CarsService.baseUrl}/cars`, car)
+      .pipe(map(c => this.store.dispatch(new AddCar(c))))
+      .subscribe()
+  }
+
+  updCar(car: Car) {
+    this.http.put<Car>(`${CarsService.baseUrl}/cars/${car.id}`, car)
+      .pipe(map(c => this.store.dispatch(new UpdCar(c))))
+      .subscribe()
+  }
+
+  delCar(car: Car): void {
+    this.http.delete<Car>(`${CarsService.baseUrl}/cars/${car.id}`)
+      .pipe(map(c => this.store.dispatch(new DelCar(c))))
+      .subscribe()
+  }
+
+
 }
