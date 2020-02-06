@@ -1,5 +1,5 @@
 import {Car} from "../car.model";
-import {AddCar, CAR_ACTIONS} from "./cars.actions";
+import {CAR_ACTIONS, CarsActions} from "./cars.actions";
 
 const initialState = {
   cars: [
@@ -8,12 +8,19 @@ const initialState = {
   ]
 }
 
-export function carsReducer(state = initialState, action: AddCar) {
+export function carsReducer(state = initialState, action: CarsActions) {
   switch (action.type) {
     case CAR_ACTIONS.ADD_CAR:
       return {
         ...state,
         cars: [...state.cars, action.payload]
+      }
+    case CAR_ACTIONS.DEL_CAR:
+      return {
+        ...state,
+        cars: [
+          ...state.cars.filter(c => c.id !== action.payload.id)
+        ]
       }
     default:
       return state;

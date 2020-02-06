@@ -28,9 +28,9 @@ export class AppComponent implements OnInit{
     // this.cars.push(car);
   }
 
-  onDelete(car: Car) {
-    // this.cars = this.cars.filter(c => c.id !== car.id);
-  }
+  // onDelete(car: Car) {
+  //   // this.cars = this.cars.filter(c => c.id !== car.id);
+  // }
 
 
 }
